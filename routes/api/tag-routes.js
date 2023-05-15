@@ -31,6 +31,11 @@ router.get('/:id', async (req, res) => {
 });
 
 router.post('/', async (req, res) => {
+  /* req.body should look like this...
+    {
+      tag_name: "fandom"
+    }
+  */
   try {
     // create a new tag
     const newTag = await Tag.create(req.body)
@@ -60,7 +65,7 @@ router.put('/:id', async (req, res) => {
 
 router.delete('/:id', async (req, res) => {
   try {
-    // delete on tag by its `id` value
+    // delete one tag by its `id` value
     const deleteTag = await Tag.destroy({
       where: {
         id: req.params.id,
